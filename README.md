@@ -1,6 +1,6 @@
 # java-rekognition
 prepare: hold an aws account 
-         add IAM user with the access property of AmazonRekognitionFullAccess and AmazonS3ReadOnlyAccess
+         add IAM user with the access property of AmazonRekognitionFullAccess and AmazonS3ReadOnlyAccess\n
          intstall AWS CLI in desttop 
          create access key for the above user in IAM
          configure access key on your desktop,just run the following command on your desttop:aws configure in command
