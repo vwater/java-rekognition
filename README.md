@@ -9,7 +9,7 @@ prepare:
          
          create access key for the above user in IAM.  
          
-         configure access key on your desktop,just run the following command on your desttop: 'aws configure' in win cmd command line.  
+         configure access key on your desktop,just run the following command on your desktop: 'aws configure' in win cmd command line.  
          
          then enter the access key ID、secret access key、region(the region should be same S3 bucket, and the region should be reach).
            
