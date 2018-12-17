@@ -1,5 +1,5 @@
 # java-rekognition
-prepare:  
+Prerequisites:  
 
          hold an aws account.  
 
