@@ -19,10 +19,13 @@ import java.util.List;
 @RequestMapping("/image/detect")
 public class ImageController {
 
+    /*
+    detect the text of image
+     */
 
     @PostMapping("/text")
-    public  void detectedText(@RequestParam String bucket, String photo){
-        AWSCredentials credentials  = new ProfileCredentialsProvider().getCredentials();
+    public void detectedText(@RequestParam String bucket, String photo) {
+        AWSCredentials credentials = new ProfileCredentialsProvider().getCredentials();
 
         AmazonRekognition rekognitionClient = AmazonRekognitionClientBuilder.standard().withRegion("us-east-2").withCredentials(new AWSStaticCredentialsProvider(credentials)).build();
 
@@ -35,17 +38,18 @@ public class ImageController {
             List<TextDetection> labels = result.getTextDetections();
 
             System.out.println("Detected labels for " + photo);
-            for (TextDetection label: labels) {
+            for (TextDetection label : labels) {
                 System.out.println("Detected: " + label.getDetectedText());
                 System.out.println("Confidence: " + label.getConfidence().toString());
                 System.out.println("Id : " + label.getId());
                 System.out.println("Type: " + label.getType());
-                System.out.println("Geometry:"+label.getGeometry());
-                System.out.println();            }
-        } catch(AmazonRekognitionException e) {
+                System.out.println("Geometry:" + label.getGeometry());
+                System.out.println();
+            }
+        } catch (AmazonRekognitionException e) {
             e.printStackTrace();
         }
     }
-
-
 }
+
+
