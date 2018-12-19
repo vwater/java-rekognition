@@ -38,11 +38,11 @@ public class VideoDetectController {
     private  String bucket = ""; //  bucket name video on S3
     private  String video = "";  //video name on S3
     private  String queueUrl =  ""; //url of your created SQS
-    private  String topicArn="";    //arn of sns
-    private  String roleArn="";     //arn of role in IAM define
+    private static String topicArn="";    //arn of sns
+    private static String roleArn="";     //arn of role in IAM define
     private  AmazonSQS sqs = null;
-    private  AmazonRekognition rek = null;
-    private  NotificationChannel channel= new NotificationChannel()
+    private static AmazonRekognition rek = null;
+    private static NotificationChannel channel= new NotificationChannel()
             .withSNSTopicArn(topicArn)
             .withRoleArn(roleArn);
 
