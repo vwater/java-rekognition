@@ -35,19 +35,20 @@ import java.util.*;
 @RestController
 @RequestMapping("/video/detect")
 public class VideoDetectController {
-    private static String bucket = ""; //  bucket name video on S3
-    private static String video = "";  //video name on S3
-    private static String queueUrl =  ""; //url of your created SQS
-    private static String topicArn="";    //arn of sns
-    private static String roleArn="";     //arn of role in IAM define
-    private static AmazonSQS sqs = null;
-    private static AmazonRekognition rek = null;
-    private static NotificationChannel channel= new NotificationChannel()
+    private  String bucket = ""; //  bucket name video on S3
+    private  String video = "";  //video name on S3
+    private  String queueUrl =  ""; //url of your created SQS
+    private  String topicArn="";    //arn of sns
+    private  String roleArn="";     //arn of role in IAM define
+    private  AmazonSQS sqs = null;
+    private  AmazonRekognition rek = null;
+    private  NotificationChannel channel= new NotificationChannel()
             .withSNSTopicArn(topicArn)
             .withRoleArn(roleArn);
 
 
     private static String startJobId = null;
+    private String rekognitionRegion="us-east-2";
 
     /*
      *detect video on S3 by the parameters of bucket and video
@@ -57,7 +58,7 @@ public class VideoDetectController {
         AWSCredentials credentials = new ProfileCredentialsProvider().getCredentials();
 
 //        sqs = AmazonSQSClientBuilder.defaultClient();
-        sqs=AmazonSQSClientBuilder.standard().withRegion("us-east-2").withCredentials(new AWSStaticCredentialsProvider(credentials)).build();
+        sqs=AmazonSQSClientBuilder.standard().withRegion(rekognitionRegion).withCredentials(new AWSStaticCredentialsProvider(credentials)).build();
         rek = AmazonRekognitionClientBuilder.defaultClient();
 
         //=================================================
